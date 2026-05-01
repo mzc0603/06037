@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="经典像素风小恐龙跑酷游戏！支持键盘、鼠标和触屏操作，挑战最高分！">
+    <meta name="keywords" content="像素游戏,恐龙跑酷,网页游戏,HTML5游戏,Canvas游戏">
+    <meta name="author" content="Pixel Dino">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="像素恐龙跑酷">
+    <meta property="og:description" content="经典像素风小恐龙跑酷网页游戏">
+    <meta property="og:type" content="website">
+    <title>像素恐龙跑酷 - 经典网页游戏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas"></canvas>
+        
+        <div class="score-panel">
+            <div class="score-item">
+                <span class="score-label">得分</span>
+                <span class="score-value" id="score">0</span>
+            </div>
+            <div class="score-item">
+                <span class="score-label">最高分</span>
+                <span class="score-value" id="highScore">0</span>
+            </div>
+            <div class="score-item">
+                <span class="score-label">生命</span>
+                <span class="score-value" id="lives">❤️❤️❤️</span>
+            </div>
+        </div>
+
+        <div class="overlay" id="startScreen">
+            <div class="overlay-content">
+                <h1 class="game-title">🦕 像素恐龙跑酷</h1>
+                <p class="game-instructions">按 空格键/上箭头 或 点击屏幕 跳跃</p>
+                <p class="game-instructions">躲避仙人掌和飞鸟！</p>
+                <button class="btn btn-primary" id="startBtn">开始游戏</button>
+            </div>
+        </div>
+
+        <div class="overlay hidden" id="pauseScreen">
+            <div class="overlay-content">
+                <h2 class="game-title">⏸️ 游戏暂停</h2>
+                <button class="btn btn-primary" id="resumeBtn">继续游戏</button>
+                <button class="btn btn-secondary" id="restartFromPauseBtn">重新开始</button>
+            </div>
+        </div>
+
+        <div class="overlay hidden" id="gameOverScreen">
+            <div class="overlay-content">
+                <h2 class="game-title">💀 游戏结束</h2>
+                <p class="final-score">最终得分: <span id="finalScore">0</span></p>
+                <p class="best-score">最高分: <span id="bestScore">0</span></p>
+                <button class="btn btn-primary" id="restartBtn">再来一次</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
