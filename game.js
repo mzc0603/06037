@@ -332,6 +332,7 @@ let clouds = [];
 let ground;
 let lastObstacleTime = 0;
 let frameCount = 0;
+let animationFrameId = null;
 
 function resizeCanvas() {
     WIDTH = window.innerWidth;
@@ -388,7 +389,7 @@ function gameLoop() {
         if (gameState === 'paused') {
             drawGame();
         }
-        requestAnimationFrame(gameLoop);
+        animationFrameId = requestAnimationFrame(gameLoop);
         return;
     }
 
@@ -451,7 +452,7 @@ function gameLoop() {
 
     updateUI();
     drawGame();
-    requestAnimationFrame(gameLoop);
+    animationFrameId = requestAnimationFrame(gameLoop);
 }
 
 function drawBackground() {
@@ -521,6 +522,10 @@ function drawGame() {
 
 function startGame() {
     initAudio();
+    // 取消之前的动画循环
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+    }
     initGame();
     gameState = 'playing';
     document.getElementById('startScreen').classList.add('hidden');
@@ -551,6 +556,10 @@ function gameOver() {
 function restartGame() {
     document.getElementById('gameOverScreen').classList.add('hidden');
     document.getElementById('pauseScreen').classList.add('hidden');
+    // 取消之前的动画循环
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+    }
     initGame();
     gameState = 'playing';
     gameLoop();
